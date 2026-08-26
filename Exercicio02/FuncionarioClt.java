@@ -1,16 +1,30 @@
-public class FuncionarioClt {
-    public double valeTransporte;
-    public double valeAlimentacao;
+public class FuncionarioClt extends Funcionario {
 
-    public FuncionarioClt(double salarioBase, double valeAlimentacao, double valeTransporte) {
+    private double valeTransporte;
+    private double valeAlimentacao;
 
-        super(salarioBase += 50);
+    public FuncionarioClt(String nome, String matricula, double salarioBase, String dataAdmissao,
+                          double valeTransporte, double valeAlimentacao) {
+        super(nome, matricula, salarioBase, dataAdmissao);
         this.valeTransporte = valeTransporte;
         this.valeAlimentacao = valeAlimentacao;
     }
-    public CalcularDesconto( double salarioBase) {
-        salarioBase += 50;
+
+    public double getValeTransporte() {
+        return valeTransporte;
     }
 
+    public double getValeAlimentacao() {
+        return valeAlimentacao;
+    }
 
+    @Override
+    public double calcularSalario() {
+        return super.calcularSalario() + valeTransporte + valeAlimentacao;
+    }
+
+    @Override
+    public double calcularDesconto() {
+        return super.calcularDesconto() + 50.00;
+    }
 }
